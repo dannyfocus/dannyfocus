@@ -1,21 +1,5 @@
-#Lisboa
-$esxi = @("sppt1peesx102.bcpcorp.net, sppt1peesx101.bcpcorp.net, sppt1piesx101.bcpcorp.net, sppt1piesx102.bcpcorp.net, sppt1piesx104.bcpcorp.net, sppt1piesx103.bcpcorp.net, setpsfeesx22.bcpcorp.net, setpsfeesx21.bcpcorp.net, setpsfeesx25.bcpcorp.net, setpiziesx22.bcpcorp.net, setpiziesx23.bcpcorp.net, setpiziesx21.bcpcorp.net, sppt1peesx202.bcpcorp.net, sppt1peesx201.bcpcorp.net, setpsfiesx23.bcpcorp.net, setpsfiesx24.bcpcorp.net, setpsfiesx27.bcpcorp.net, setpsfiesx22.bcpcorp.net, setpsfiesx21.bcpcorp.net, setpsfiesx35.bcpcorp.net, setpsfiesx30.bcpcorp.net, setpsfiesx31.bcpcorp.net, setpsfiesx33.bcpcorp.net, setpsfiesx32.bcpcorp.net, setpsfiesx02.bcpcorp.net, sppt1piesx232.bcpcorp.net, setpsfiesx04.bcpcorp.net, setpsfiesx06.bcpcorp.net, setpsfiesx03.bcpcorp.net, sppt1piesx231.bcpcorp.net, setpsfiesx05.bcpcorp.net, setpsfiesx16.bcpcorp.net, sppt1piesx241.bcpcorp.net, sppt1piesx242.bcpcorp.net, setpsfiesx11.bcpcorp.net, sppt1piesx243.bcpcorp.net, setpsfiesx15.bcpcorp.net, setpsfiesx14.bcpcorp.net, setpsfiesx13.bcpcorp.net, sppt1piesx244.bcpcorp.net, sppt1piesx245.bcpcorp.net, sppt1piesx246.bcpcorp.net")
-0..42 | foreach-object {
-    $index = $_
-Get-VMHost $esxi[$index] | Get-AdvancedSetting -Name 'Config.Etc.issue' | Set-AdvancedSetting -value "Os Sistemas de Informação Internos do Grupo Millenniumbcp são exclusivos e de acesso restrito às empresas que o integram para o desenvolvimento das respectivas actividades. Apenas são admitidos acessos de entidades externas quando seja necessário para a execução de alguma tarefa devidamente autorizada.
-Se não está autorizado a aceder a este sistema, por favor DESLIGUE imediatamente.
-Qualquer tentativa ilegal de acesso, mesmo quando rejeitada, pode implicar procedimento civil e criminal, pelo que fica desde já notificado que está sujeito a tais consequências no caso de persistir.
-Este sistema está sujeito a auditorias efectuadas a qualquer momento.
-Millenniumbcp Group's internal information systems are exclusive and under restricted access to its members for pursuing their activity. Third-parties are only allowed to access when necessary to execute a specific authorized task. If you are not authorized to access this system, please DISCONNECT immediately. Any illegal attempt of access, even when rejected, might be subject of civil and criminal procedure, therefore you're notified of such consequences from this moment on, should you persist.
-This system might be audited at any time."}
-
-#Porto
-$esxi = @("sppt2peesx101.bcpcorp.net, sppt2peesx102.bcpcorp.net, sppt2piesx101.bcpcorp.net, sppt2piesx102.bcpcorp.net, septdreesx22.bcpcorp.net, septdreesx21, septiziesx21.bcpcorp.net, sppt2peesx201.bcpcorp.net, septiziesx23.bcpcorp.net, septiziesx22.bcpcorp.net, septdriesx11.bcpcorp.net, septdriesx12.bcpcorp.net, sppt2piesx201.bcpcorp.net, septdriesx31.bcpcorp.net, septdriesx32.bcpcorp.net, septdriesx30.bcpcorp.net, septdriesx33.bcpcorp.net")
+#Exemplo - Pode ser aplicado em qualquer situação
+$esxi = @("hostesxi1.domain.loc, hostesxi2.domain.loc, hostesxi3.domain.loc, hostesxi4.domain.loc, hostesxi5.domain.loc, hostesxi6.domain.loc, hostesxi7.domain.loc,")
 0..16 | foreach-object {
     $index = $_
-Get-VMHost $esxi[$index] | Get-AdvancedSetting -Name 'Config.Etc.issue' | Set-AdvancedSetting -value "Os Sistemas de Informação Internos do Grupo Millenniumbcp são exclusivos e de acesso restrito às empresas que o integram para o desenvolvimento das respectivas actividades. Apenas são admitidos acessos de entidades externas quando seja necessário para a execução de alguma tarefa devidamente autorizada.
-Se não está autorizado a aceder a este sistema, por favor DESLIGUE imediatamente.
-Qualquer tentativa ilegal de acesso, mesmo quando rejeitada, pode implicar procedimento civil e criminal, pelo que fica desde já notificado que está sujeito a tais consequências no caso de persistir.
-Este sistema está sujeito a auditorias efectuadas a qualquer momento.
-Millenniumbcp Group's internal information systems are exclusive and under restricted access to its members for pursuing their activity. Third-parties are only allowed to access when necessary to execute a specific authorized task. If you are not authorized to access this system, please DISCONNECT immediately. Any illegal attempt of access, even when rejected, might be subject of civil and criminal procedure, therefore you're notified of such consequences from this moment on, should you persist.
-This system might be audited at any time."}
+Get-VMHost $esxi[$index] | Get-AdvancedSetting -Name 'Config.Etc.issue' | Set-AdvancedSetting -value "Insert BUN here"}

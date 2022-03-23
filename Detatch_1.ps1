@@ -1,4 +1,4 @@
-$LunIDs =  "naa.60050768018207e77000000000000392"
+$LunIDs =  "naa.LUNID"
 $Clustername = "CLUSTER_DEV","CLUSTER1_PROD","CLUSTER2_PROD"
 
 function Detach-Disk {

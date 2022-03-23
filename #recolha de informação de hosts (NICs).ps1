@@ -45,4 +45,4 @@
    $collection += $CDPdetails  
    }  
  }  
- $Collection | Sort-Object esxname, vmnic | fl |Out-File –FilePath C:\Users\o344332\Desktop\nic_List_Lisboa.csv
+ $Collection | Sort-Object esxname, vmnic | fl |Out-File –FilePath C:\Users\user\Desktop\nic_List_report.csv
