@@ -1,6 +1,5 @@
 $LunIDs =  "naa.LUNID"
 $Clustername = "CLUSTER_DEV","CLUSTER1_PROD","CLUSTER2_PROD"
-
 function Detach-Disk {
     param(
         [VMware.VimAutomation.ViCore.Impl.V1.Inventory.VMHostImpl]$VMHost,
@@ -11,9 +10,7 @@ function Detach-Disk {
 
     $storSys.DetachScsiLun($lunUuid)
 }
-
 $ClusterHosts = Get-Cluster $Clustername | Get-VMHost
-
 Foreach($VMHost in $ClusterHosts)
 {
     Foreach($LUNid in $LunIDs)
