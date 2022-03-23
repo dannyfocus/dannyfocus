@@ -1,5 +1,7 @@
 ## Scripts de VMware (Trabalho em progresso)
 
+<img src="https://github.com/dannyfocus/dannyfocus/blob/gh-pages/vmware.jpg" alt="VMware rectangle logo" style="height: 100px; width:100px;"/>
+
 [Image](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/vmware.jpg)
 
 
