@@ -1,5 +1,3 @@
-#: Andru Estes (w/ LucD help)
-#: December 09, 2015
 #: Script reads in user input of NAA ID for desired LUN and automates the process of attaching to a cluster. 
 
 # Settings...

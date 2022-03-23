@@ -1,5 +1,17 @@
-$LunIDs =  "naa.LUNID"
-$Clustername = "CLUSTER_DEV","CLUSTER1_PROD","CLUSTER2_PROD"
+#Retirar LUNs do VMware
+
+# Correr o script e ele irá pedir os valores, não é necessário escrita no código
+
+#Insere LUN ID aqui
+$LunIDs =  Read-Host "Enter NAA ID here"
+
+#Insere CLUSTER aqui
+$Clustername = Read-Host "Enter CLUSTER here"
+
+#######################################################
+###				        Inicio              		###
+#######################################################
+
 function Detach-Disk {
     param(
         [VMware.VimAutomation.ViCore.Impl.V1.Inventory.VMHostImpl]$VMHost,
@@ -10,6 +22,11 @@ function Detach-Disk {
 
     $storSys.DetachScsiLun($lunUuid)
 }
+
+#######################################################
+###				         Fim                  		###
+#######################################################
+
 $ClusterHosts = Get-Cluster $Clustername | Get-VMHost
 Foreach($VMHost in $ClusterHosts)
 {
