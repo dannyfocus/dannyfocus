@@ -6,6 +6,7 @@
 
 ### Introdução de um novo host
 -[script New host_v1](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/New%20Host_v1.ps1)
+
 -[script New host_v2](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/new_host_v2.ps1) - _Em progresso_
 
 ### Listagem de NICs dos ESXi
@@ -16,6 +17,7 @@
 
 ### Attach / Dettach
 -[Attach](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Attach-SCSILun.ps1)
+
 -[Detach](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Detatch_LUNs.ps1)
 
 ### Criar report de WWNs
@@ -23,6 +25,7 @@
 
 ### Pedaços de código
 -[script](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Scripts.ps1)
+
 -[script](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Untitled-4.ps1)
 
 ### Validação de Raw Devices
