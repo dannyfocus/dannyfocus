@@ -13,7 +13,7 @@
 [Connect to vCenter](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Connect-Vcenters.ps1)
 
 ### Attach / Dettach
-[Attach]https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Attach-SCSILun.ps1
+[Attach](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Attach-SCSILun.ps1)
 [Detach](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Detatch_LUNs.ps1)
 
 ### Criar report de WWNs
