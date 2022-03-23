@@ -26,4 +26,4 @@ ForEach-Object -Process {
     }
   }
 } | Format-Table -AutoSize
-$vds | Export-Csv -path C:\Users\T01532\Desktop\New folder\teste.csv -NoTypeInformation -UseCulture
+$vds | Export-Csv -path C:\Users\user\Desktop\New folder\teste.csv -NoTypeInformation -UseCulture
