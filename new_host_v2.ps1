@@ -3,6 +3,7 @@
 $Newhost = Read-Host "Enter FQDN of new host"
 
 #Correr no vcenter
+
 #Configuração SysLog
 Get-AdvancedSetting -Entity $Newhost -Name "VMFS3.UseATSForHBOnVMFS5" | Set-AdvancedSetting -Value "0" | ft -auto
 Get-AdvancedSetting -Entity $Newhost -Name "Syslog.global.logHost" | Set-AdvancedSetting -Value "udp://10.80.21.63:514" | ft -auto
@@ -75,20 +76,42 @@ This sets the Power Policy to High Performance (1)
 3=LowPower
 #>
 
-Criar array com os valores necessários no acto da instalação
+#Criar array com os valores necessários no acto da instalação
 #Criar vSwitch
 New-VirtualSwitch -VMHost $Newhost -Name vSwitch1 -nic vmnic4,vmnic5 -mtu 1500
 
 #Criar portgroups
-Get-VMHost "esxihost(renomear).domain.loc" | Get-VirtualSwitch -name vSwitchx | New-VirtualPortGroup -name  "VLANXXX-Database" -VLANId 1.2.3
+Get-VMHost "$Newhost" | Get-VirtualSwitch -name vSwitchx | New-VirtualPortGroup -name  "VLANXXX-Database" -VLANId 1.2.3
 
 #Reservar Raw Devices
 $vmHosts = get-cluster "CLUSTER_PROD" | get-vmhost
 $myesxcli = Get-EsxCli -VMHost $vmhosts
 $myesxcli.storage.core.device.setconfig($false,	"naa.LUNID(ID do raw device em minusculas)",$true)
 
+#Recolha de evidências
+#Q115
+Get-VMHost "$Newhost"  | Get-View |  Select Name,{$_.Config.Product.FullName},{$_.Config.Product.Build} | ft -auto
+#Q205
+
+Get-VMHost "$Newhost" | Sort Name | %{
+   $thisUUID = (Get-EsxCli -VMHost $_.name).system.uuid.get()
+   $decDate = [Convert]::ToInt32($thisUUID.Split("-")[0], 16)
+   $installDate = [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds($decDate))
+   [pscustomobject][ordered]@{
+     Name="$($_.name)"
+     InstallDate=$installDate
+   } # end custom object
+} # end host loop
+
+
+#criar uma pausa
+Pause
 
 #Correr no host
+
+#$Newhost = Read-Host "Enter FQDN of new host"
+$newdatastore = Read-Host "Enter datastore name"
+
 #Criar users
 New-VMHostAccount -Id USER1 -password PASSWORD -Description "Description"
 New-VMHostAccount -Id USER2 -password PASSWORD -Description "Description"
@@ -102,29 +125,10 @@ Set-VMHostAccount -UserAccount "root" -Description "Description" | ft -auto
 Get-VMHostAccount | ft -auto
 
 #Renomear Datastores
-Get-Datastore -name datastore1 | Set-Datastore -name esxihost(renomear)_001_r1_internal
+Get-Datastore -name $newdatastore | Set-Datastore -name $newdatastore+"_001_r1_internal"
 
 #Criar pasta Log
-$datastore = Get-Datastore -Name esxihost(renomear)_001_r1_internal
+$datastore = Get-Datastore -Name $newdatastore
 New-PSDrive -Location $datastore -Name DS -PSProvider VimDatastore -Root "\"
 New-Item -Path DS:\Log -ItemType Directory
 Remove-PSDrive -Name DS -Confirm:$false
-
-
-
-
-
-#Recolha de evidências
-#Q115
-Get-VMHost "esxihost(renomear).domain.loc"  | Get-View |  Select Name,{$_.Config.Product.FullName},{$_.Config.Product.Build} | ft -auto
-#Q205
-
-Get-VMHost "esxihost(renomear).domain.loc" | Sort Name | %{
-   $thisUUID = (Get-EsxCli -VMHost $_.name).system.uuid.get()
-   $decDate = [Convert]::ToInt32($thisUUID.Split("-")[0], 16)
-   $installDate = [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds($decDate))
-   [pscustomobject][ordered]@{
-     Name="$($_.name)"
-     InstallDate=$installDate
-   } # end custom object
-} # end host loop
