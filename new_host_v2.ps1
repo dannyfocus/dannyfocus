@@ -28,8 +28,8 @@ Get-VMHost $Newhost | Get-VmHostService | Where-Object {$_.key -eq "ntpd"}
 Get-VMHost $Newhost | Get-AdvancedSetting -Name 'Security.PasswordQualityControl' | Set-AdvancedSetting -value "retry=3 min=disabled,disabled,disabled,15,15"
 
 #BUN
-Get-VMHost $Newhost | Get-AdvancedSetting -Name 'Annotations.WelcomeMessage' | Set-AdvancedSetting -value "This system should be used for conducting Millenniumbcp's business or for purposes authorized by Millenniumbcp management. It is mandatory to comply with all the requirements listed in the applicable security policy and only process or store the data classes approved for this asset type. Use is subject to audit at any time by Millenniumbcp management"
-Get-VMHost $Newhost | Get-AdvancedSetting -Name 'Config.Etc.issue' | Set-AdvancedSetting -value "This system should be used for conducting Millenniumbcp's business or for purposes authorized by Millenniumbcp management. It is mandatory to comply with all the requirements listed in the applicable security policy and only process or store the data classes approved for this asset type. Use is subject to audit at any time by Millenniumbcp management"
+Get-VMHost $Newhost | Get-AdvancedSetting -Name 'Annotations.WelcomeMessage' | Set-AdvancedSetting -value "Insert BUN here"
+Get-VMHost $Newhost | Get-AdvancedSetting -Name 'Config.Etc.issue' | Set-AdvancedSetting -value "Insert BUN here"
 
 #Account Unlock Time
 Get-VMHost $Newhost | Get-AdvancedSetting -Name 'Security.AccountUnlockTime' | Set-AdvancedSetting -value "120"
@@ -80,23 +80,23 @@ Criar array com os valores necessários no acto da instalação
 New-VirtualSwitch -VMHost $Newhost -Name vSwitch1 -nic vmnic4,vmnic5 -mtu 1500
 
 #Criar portgroups
-Get-VMHost "esxihost(renomear).bcpcorp.net" | Get-VirtualSwitch -name vSwitchx | New-VirtualPortGroup -name  "VLANXXX-Database-Replication" -VLANId 1.2.3
+Get-VMHost "esxihost(renomear).domain.loc" | Get-VirtualSwitch -name vSwitchx | New-VirtualPortGroup -name  "VLANXXX-Database" -VLANId 1.2.3
 
 #Reservar Raw Devices
-$vmHosts = get-cluster "CLUSTER10_PROD_TP" | get-vmhost
+$vmHosts = get-cluster "CLUSTER_PROD" | get-vmhost
 $myesxcli = Get-EsxCli -VMHost $vmhosts
-$myesxcli.storage.core.device.setconfig($false,	"naa.600507680c808312a000000000000cca(ID do raw device em minusculas)",$true)
+$myesxcli.storage.core.device.setconfig($false,	"naa.LUNID(ID do raw device em minusculas)",$true)
 
 
 #Correr no host
 #Criar users
-New-VMHostAccount -Id usrbckvmw -password AD47lPk90 -Description "822/S/*BCPVMW/IBM/User Backup VMW"
-New-VMHostAccount -Id u822iam1 -password aim!BIM?2016 -Description "822/F/*PTIAM/IBM/PT#Portugal IAM Team"
+New-VMHostAccount -Id USER1 -password PASSWORD -Description "Description"
+New-VMHostAccount -Id USER2 -password PASSWORD -Description "Description"
 
 #Alteração da descrição dos users
-Set-VMHostAccount -UserAccount "vpxuser" -Description "822/S/*BCPVMW/IBM/VMware VirtualCenter administration account" | ft -auto
-Set-VMHostAccount -UserAccount "dcui" -Description "822/S/*BCPVMW/IBM/DCUI User" | ft -auto
-Set-VMHostAccount -UserAccount "root" -Description "822/F/*BCPVMW/IBM/Administrator" | ft -auto
+Set-VMHostAccount -UserAccount "vpxuser" -Description "Description" | ft -auto
+Set-VMHostAccount -UserAccount "dcui" -Description "Description" | ft -auto
+Set-VMHostAccount -UserAccount "root" -Description "Description" | ft -auto
 
 #validar users
 Get-VMHostAccount | ft -auto
@@ -116,10 +116,10 @@ Remove-PSDrive -Name DS -Confirm:$false
 
 #Recolha de evidências
 #Q115
-Get-VMHost "esxihost(renomear).bcpcorp.net"  | Get-View |  Select Name,{$_.Config.Product.FullName},{$_.Config.Product.Build} | ft -auto
+Get-VMHost "esxihost(renomear).domain.loc"  | Get-View |  Select Name,{$_.Config.Product.FullName},{$_.Config.Product.Build} | ft -auto
 #Q205
 
-Get-VMHost "esxihost(renomear).bcpcorp.net" | Sort Name | %{
+Get-VMHost "esxihost(renomear).domain.loc" | Sort Name | %{
    $thisUUID = (Get-EsxCli -VMHost $_.name).system.uuid.get()
    $decDate = [Convert]::ToInt32($thisUUID.Split("-")[0], 16)
    $installDate = [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds($decDate))
