@@ -1,5 +1,7 @@
 ## Scripts de VMware (Trabalho em progresso)
 
+[Image](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/vmware.jpg)
+
 
 - List
 ### Introdução de um novo host
