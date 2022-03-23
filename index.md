@@ -1,48 +1,36 @@
-## Welcome to GitHub Pages
+## Scripts de VMware (Trabalho em progresso)
 
-You can use the [editor on GitHub](https://github.com/dannyfocus/dannyfocus/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-# Header 2
-
-- Bulleted
 - List
+### Introdução de um novo host
+[script New host_v1](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/New%20Host_v1.ps1)
+[script New host_v2](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/new_host_v2.ps1) - _Em progresso_
 
-1. Numbered
-2. List
+### Listagem de NICs dos ESXi
+[NIC List](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/NICs%20Report%20(hosts).ps1)
 
-**Bold** and _Italic_ and `Code` text
+### Ligação de teste ao vCenter
+[Connect to vCenter](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Connect-Vcenters.ps1)
 
-[Link](url) and ![Image](src)
-```
+### Attach / Dettach
+[Attach]https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Attach-SCSILun.ps1
+[Detach](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Detatch_LUNs.ps1)
 
-# Header 1
-## Header 2
-### Header 3
-# Header 2
+### Criar report de WWNs
+[Report WWN List](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/List_WWN's.ps1)
 
+### Pedaços de código
+[script](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Scripts.ps1)
+[script](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/Untitled-4.ps1)
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### Validação de Raw Devices
+[Validate Raw Devices](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/VMWARE_Validate%20RAW%20Devices.ps1)
 
-### Jekyll Themes
+### Validar estado das ligações aos hosts
+[Host Uplink State](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/VMWare_Uplink%20State.ps1)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dannyfocus/dannyfocus/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Criar report de iSCSI existetentes na infraestrutura
+[Report iSCSI Controller](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/iSCSI_controller.ps1)
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-
-
-Teste - [script New host_v1](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/New%20Host_v1.ps1)
-
+### Criar report de raw devices existetentes na infraestrutura
+[Report Raw Devices](https://github.com/dannyfocus/dannyfocus/blob/gh-pages/list_raw_devices.ps1)
