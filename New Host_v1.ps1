@@ -146,3 +146,7 @@
 			InstallDate=$installDate
 		} # end custom object
 	} # end host loop
+
+	#Q205 (vCenter)
+	#Sessão SSH ao vcenter
+	com.vmware.appliance.version1.system.version.get
